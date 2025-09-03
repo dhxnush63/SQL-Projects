@@ -228,7 +228,7 @@ DELIMITER $$
 CREATE TRIGGER trg_update_seat AFTER INSERT ON Bookings
 FOR EACH ROW
 BEGIN
-    UPDATE Seats SET AvailabilityStatus = 'Booked' WHERE TrainID = NEW.TrainID LIMIT 1;  -- Simplified for demo
+    UPDATE Seats SET AvailabilityStatus = 'Booked' WHERE TrainID = NEW.TrainID LIMIT 1;  
 END $$
 DELIMITER ;
 
@@ -275,7 +275,6 @@ BEGIN
     read_loop: LOOP
         FETCH cur INTO bookingId;
         IF done THEN LEAVE read_loop; END IF;
-        -- Log action (e.g., INSERT INTO LogTable VALUES (bookingId));
     END LOOP;
     CLOSE cur;
 END $$
@@ -290,7 +289,7 @@ DELIMITER $$
 CREATE FUNCTION CalculateFareWithTax(base DECIMAL(10,2)) RETURNS DECIMAL(10,2)
 DETERMINISTIC
 BEGIN
-    RETURN base * 1.05;  -- Add 5% tax
+    RETURN base * 1.05;  
 END $$
 DELIMITER ;
 SELECT CalculateFareWithTax(TotalAmount) FROM Bookings;
