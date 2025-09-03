@@ -40,7 +40,7 @@ CREATE TABLE Schedules (
     TrainID INT,
     DepartureTime TIMESTAMP NOT NULL,
     ArrivalTime TIMESTAMP NOT NULL,
-    DaysOfOperation VARCHAR(50) NOT NULL,  -- e.g., 'Mon-Wed-Fri'
+    DaysOfOperation VARCHAR(50) NOT NULL,  
     FOREIGN KEY (TrainID) REFERENCES Trains(TrainID)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE Bookings (
     UserID INT,
     TrainID INT,
     ScheduleID INT,
-    BookingStatus VARCHAR(50) NOT NULL,  -- e.g., 'Confirmed', 'Cancelled'
+    BookingStatus VARCHAR(50) NOT NULL,  
     BookingDate DATE NOT NULL,
     TotalAmount DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
@@ -63,8 +63,8 @@ CREATE TABLE Seats (
     SeatID INT PRIMARY KEY,
     TrainID INT,
     SeatNumber VARCHAR(10) NOT NULL,
-    ClassType VARCHAR(50) NOT NULL,  -- e.g., 'Economy', 'Business'
-    AvailabilityStatus VARCHAR(50) NOT NULL,  -- e.g., 'Available', 'Booked'
+    ClassType VARCHAR(50) NOT NULL,  
+    AvailabilityStatus VARCHAR(50) NOT NULL,  
     FOREIGN KEY (TrainID) REFERENCES Trains(TrainID)
 );
 
